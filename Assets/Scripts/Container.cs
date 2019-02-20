@@ -10,6 +10,7 @@ public class Container : MonoBehaviour, IComparable
     public string Name { get; private set; }
     public bool IsNpc { get; private set; }
     public bool Dead { get; private set; }
+    public int Health { get; private set; }
 
     private void Awake()
     {
@@ -23,6 +24,12 @@ public class Container : MonoBehaviour, IComparable
     public void SetName(string newName)
     {
         Name = newName;
+    }
+
+    public void SetHealth(string hp)
+    {
+        int.TryParse(hp, out int health);
+        Health = health;
     }
 
     public void SetInitiative(string newInitiative)
@@ -63,6 +70,8 @@ public class Container : MonoBehaviour, IComparable
     public void Died(bool dead)
     {
         Dead = dead;
+
+        transform.Find("Health").GetComponent<InputField>().text = dead ? "0" : "" + Health;
 
         SetBackgroundColor();
     }
