@@ -8,7 +8,7 @@ This is a Unity project. It allows you to track your DnD players' initiative.
 
 ## How do I use it?
 
-You can either download the source code and mess around with it yourself or download a build (XX add builds here).
+You can either download the source code and mess around with it yourself or download a build found under [Releases](https://github.com/ChaiKnight/dnd-initiative-unity/releases).
 The program itself is super simple, and with any amount of experience DM'ing combats the options should be fairly obvious.
 
 ## How can I help?
