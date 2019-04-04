@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +13,19 @@ public class Controller : MonoBehaviour
     private GameObject Instance;
 
     private List<Container> Containers = new List<Container>();
+    public static string[] Names { get; private set; }
+    public static int NumActors { get; private set; }
 
     private void Awake()
     {
-        Screen.SetResolution(400, 120, false);
+        Screen.SetResolution(400, 220, false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Names = File.ReadAllLines("Assets/Resources/names.txt");
+        Debug.Log(Names.Length);
     }
 
     // Update is called once per frame
@@ -31,6 +35,8 @@ public class Controller : MonoBehaviour
         {
             NextTurn();
         }
+
+        NumActors = Containers.Count;
     }
 
     private void NextTurn()
@@ -126,13 +132,13 @@ public class Controller : MonoBehaviour
         Containers.Sort();
         for(int i = 0; i < Containers.Count; i++)
         {
-            Containers[i].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 25 + i * 50);
+            Containers[i].gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 125 + i * 50);
         }
     }
 
     private void Resize(int num)
     {
-        Screen.SetResolution(400, 120 + 50 * num, false);
-        Background.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 120 + 50 * num);
+        Screen.SetResolution(400, 220 + 50 * num, false);
+        Background.GetComponent<RectTransform>().sizeDelta = new Vector2(400, 220 + 50 * num);
     }
 }
